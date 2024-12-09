@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.laoumri.controller.UserControllerIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 3.974 s - in com.laoumri.controller.UserControllerIntegrationTest

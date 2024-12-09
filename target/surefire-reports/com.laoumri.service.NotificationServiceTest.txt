@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.laoumri.service.NotificationServiceTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in com.laoumri.service.NotificationServiceTest
