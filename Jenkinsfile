@@ -4,8 +4,9 @@ node {
   }
   stage('SonarQube Analysis') {
     def mvn = tool 'maven';
+    def sonarHome = tool 'sonarqube';
     withSonarQubeEnv(installationName: 'SonarQube') {
-      sh "${mvn}/bin/mvn clean sonar:sonar -Dsonar.projectKey=IssamLaoumri_social-media-app-backend_ae422c33-fcf3-44bf-be8d-ef064621582e -Dsonar.projectName='social-media-app-backend'"
+      sh "${mvn}/bin/mvn clean ${sonarHome}/bin/sonar-scanner -Dsonar.projectKey=IssamLaoumri_social-media-app-backend_ae422c33-fcf3-44bf-be8d-ef064621582e -Dsonar.projectName='social-media-app-backend'"
     }
   }
 }
