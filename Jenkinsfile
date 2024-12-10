@@ -1,10 +1,7 @@
 pipeline {
     agent any
-    environment {
-        SONAR_TOKEN = credentials('SONARQUBE_TOKEN_ID') // Jenkins credentials ID for Sonar token
-    }
     tools {
-        maven 'maven' // Name of the Maven installation in Jenkins
+        maven 'maven'
     }
     stages {
         stage('Checkout') {
@@ -20,7 +17,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "clean verify sonar:sonar -Dsonar.projectKey=social_media_backend_pipepline -Dsonar.projectName='social_media_backend_pipepline'"
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=social_media_backend_pipepline -Dsonar.projectName='social_media_backend_pipepline'"
                 }
             }
         }
