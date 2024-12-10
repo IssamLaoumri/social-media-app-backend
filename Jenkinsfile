@@ -9,4 +9,3 @@ node {
     }
   }
 }
-//mvn clean verify sonar:sonar   -Dsonar.projectKey=social_media_backend   -Dsonar.projectName='social_media_backend'   -Dsonar.host.url=http://localhost:9000    -Dsonar.token=sqp_4550881832e655d7540935139bf803067396e134
