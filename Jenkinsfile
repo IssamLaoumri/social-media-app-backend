@@ -17,8 +17,12 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "mvn clean sonar:sonar -Dsonar.projectKey=social_media_backend_pipepline -Dsonar.projectName='social_media_backend_pipepline'"
-                }
+                    sh """
+                        mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=social_media_backend_pipeline \
+                        -Dsonar.projectName='social_media_backend_pipeline' \
+                        -Dsonar.java.binaries=target/classes
+                    """                }
             }
         }
         stage('Quality Gate') {
