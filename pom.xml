@@ -125,6 +125,14 @@
 			<artifactId>jasypt-maven-plugin</artifactId>
 			<version>3.0.5</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.sonarsource.sonarqube/sonar-scanner-engine-shaded -->
+		<dependency>
+			<groupId>org.sonarsource.sonarqube</groupId>
+			<artifactId>sonar-scanner-engine-shaded</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
