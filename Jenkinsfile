@@ -19,7 +19,6 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     sh """
                         mvn clean verify sonar:sonar \
-                        -Dsonar.webhooks.project=http://127.0.0.1:8085/sonarqube-webhook/ \
                         -Dsonar.scanner.forceAnalysis=true \
                         -Dsonar.projectKey=social_media_backend_pipeline \
                         -Dsonar.projectName='social_media_backend_pipeline' \
