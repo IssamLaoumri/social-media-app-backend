@@ -9,6 +9,16 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Unit Tests') {
+            steps {
+                sh 'mvn test -Punit-tests'
+            }
+        }
+        stage('Integration Tests') {
+            steps {
+                sh 'mvn verify -Pintegration-tests'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn clean install'
@@ -18,7 +28,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh """
-                        mvn clean verify sonar:sonar \
+                        mvn clean sonar:sonar \
                         -Dsonar.scanner.forceAnalysis=true \
                         -Dsonar.projectKey=social_media_backend_pipeline \
                         -Dsonar.projectName='social_media_backend_pipeline' \
@@ -37,6 +47,18 @@ pipeline {
                     }
                 }
             }
+        }
+    }
+    post {
+        success {
+            emailext subject: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                     body: "The build was successful.\n\nCheck details: ${env.BUILD_URL}",
+                     recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+        }
+        failure {
+            emailext subject: "Build FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                     body: "The build failed.\n\nCheck details: ${env.BUILD_URL}",
+                     recipientProviders: [[$class: 'DevelopersRecipientProvider']]
         }
     }
 }
