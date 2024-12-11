@@ -21,14 +21,14 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn clean install -DskipTests'
             }
         }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh """
-                        mvn clean sonar:sonar \
+                        mvn clean verify sonar:sonar \
                         -Dsonar.scanner.forceAnalysis=true \
                         -Dsonar.projectKey=social_media_backend_pipeline \
                         -Dsonar.projectName='social_media_backend_pipeline' \
