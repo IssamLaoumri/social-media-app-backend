@@ -48,6 +48,16 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to Test Environment') {
+            steps {
+                echo "Deploying to Test Environment..."
+                bat '''
+                    if not exist C:\\test-environment mkdir C:\\test-environment
+                    copy target\\*.jar C:\\test-environment\\
+                    echo Application deployed to C:\\test-environment
+                '''
+            }
+        }
     }
     post {
         success {
