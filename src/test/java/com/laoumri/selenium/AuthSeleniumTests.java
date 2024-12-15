@@ -1,20 +1,17 @@
 package com.laoumri.selenium;
 
 import com.laoumri.shared.DoLogin;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AuthSeleniumTests extends BaseSeleniumTest{
-//    @Test
-//    @Order(2)
+    @Test
+    @Order(2)
     public void testLogin() {
         DoLogin.login(driver, wait);
 
@@ -23,8 +20,8 @@ public class AuthSeleniumTests extends BaseSeleniumTest{
         assertEquals("http://localhost:4200/profile", currentUrl, "User should be redirected to the profile after login.");
     }
 
-//    @Test
-//    @Order(1)
+    @Test
+    @Order(1)
     public void testSignUp(){
         driver.get("http://localhost:4200/signup");
 
@@ -39,10 +36,10 @@ public class AuthSeleniumTests extends BaseSeleniumTest{
         emailField.sendKeys("abdo@gmail.com");
 
         WebElement passwordField = driver.findElement(By.id("password"));
-        passwordField.sendKeys("Issam-laoumri1!");
+        passwordField.sendKeys("Mq6?W4sd");
 
         WebElement repeatPasswordField = driver.findElement(By.id("passwordRepeat"));
-        repeatPasswordField.sendKeys("Issam-laoumri1!");
+        repeatPasswordField.sendKeys("Mq6?W4sd");
 
         // Locate and click the login button
         WebElement signUpButton = driver.findElement(By.id("register_btn"));

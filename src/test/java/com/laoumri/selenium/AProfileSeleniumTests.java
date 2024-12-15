@@ -1,17 +1,20 @@
 package com.laoumri.selenium;
 
 import com.laoumri.shared.DoLogin;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class ProfileSeleniumTests extends BaseSeleniumTest{
-    //@Test
+public class AProfileSeleniumTests extends BaseSeleniumTest{
+    @Test
+    @Order(3)
     public void testUploadProfilePhoto(){
         DoLogin.login(driver, wait);
         driver.get("http://localhost:4200/profile");
-        driver.manage().addCookie(new Cookie("JWT-SESSION", "eyJhbGciOiJIUzI1NiJ9.eyJsYXN0UmVmcmVzaFRpbWUiOjE3MzM1OTQyNTExMjMsInhzcmZUb2tlbiI6InZ1YTV2bm9naHY5MnY5ZHI4MGhxamNvdHEwIiwianRpIjoiQVpPaUpoVkt5cEJTeUhCT3Z1U2IiLCJzdWIiOiJBWkthOURkVzJSREczYWhJZktlQiIsImlhdCI6MTczMzU5MjIyNSwiZXhwIjoxNzMzODUzNDUxfQ.Z1JiXSETubIeXVd--bvG1pY5uko0MvTbswdhdX-R0P8"));
+        driver.manage().addCookie(new Cookie("JWT-SESSION", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyczFAZXhhbXBsZS5jb20iLCJleHAiOjE3MzUzOTYxNjAsImlhdCI6MTczNDE4NjU2MCwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl19.4oABQd8gcBIrSeKc2zpbBZnaV-RYNkblpgojzn6m6Nsdw-MyFO7zpKWqIzZE3ay-KhmKGs8Z2h3r9E_Ryw8X9Q"));
         WebElement uploadProfileBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("upload_profile_btn")));
         uploadProfileBtn.click();
         WebElement chooseBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("input[type=file]")));

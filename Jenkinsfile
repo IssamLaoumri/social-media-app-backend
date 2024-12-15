@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven 'maven'
     }
+    environment {
+        DOCKER_IMAGE = "social_media_backend_pipeline:${env.BUILD_NUMBER}"
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -30,8 +33,8 @@ pipeline {
                     sh """
                         mvn clean verify sonar:sonar \
                         -Dsonar.scanner.forceAnalysis=true \
-                        -Dsonar.projectKey=social_media_backend_pipeline \
-                        -Dsonar.projectName='social_media_backend_pipeline' \
+                        -Dsonar.projectKey=social_media_pipeline-final \
+                        -Dsonar.projectName='social_media_pipeline-final' \
                         -Dsonar.java.binaries=target/classes
                     """                }
             }
@@ -48,14 +51,20 @@ pipeline {
                 }
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t ${DOCKER_IMAGE} .'
+                }
+            }
+        }
         stage('Deploy to Test Environment') {
             steps {
-                echo "Deploying to Test Environment..."
-                bat '''
-                    if not exist C:\\test-environment mkdir C:\\test-environment
-                    copy target\\*.jar C:\\test-environment\\
-                    echo Application deployed to C:\\test-environment
-                '''
+                script {
+                    sh 'docker stop social_media_test || true'
+                    sh 'docker rm social_media_test || true'
+                    sh 'docker run -d --name social_media_test -p 8080:8080 ${DOCKER_IMAGE}'
+                }
             }
         }
     }

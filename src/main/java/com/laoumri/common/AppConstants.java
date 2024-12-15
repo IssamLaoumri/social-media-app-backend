@@ -35,7 +35,8 @@ public class AppConstants {
             "/api/v1/forgot-password",
             "/api/v1/reset-password/**",
             "/images/**",
-            "/uploads/**"
+            "/uploads/**",
+            "/actuator/**"
     };
     public static final String EMAIL_NOT_FOUND = "Email address does not exist.";
     public static final String EMAIL_EXISTS = "User exists with this email address.";

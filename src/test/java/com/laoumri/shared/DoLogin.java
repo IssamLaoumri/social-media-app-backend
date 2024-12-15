@@ -17,7 +17,7 @@ public class DoLogin {
 
         // Locate and fill the password field
         WebElement passwordField = driver.findElement(By.id("password"));
-        passwordField.sendKeys("Issam-laoumri1!");
+        passwordField.sendKeys("Mq6?W4sd");
 
         // Locate and click the login button
         WebElement loginButton = driver.findElement(By.id("login_btn"));
