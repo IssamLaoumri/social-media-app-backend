@@ -12,16 +12,16 @@ pipeline {
                 checkout scm
             }
         }
-//         stage('Unit Tests') {
-//             steps {
-//                 sh 'mvn test -Punit-tests'
-//             }
-//         }
-//         stage('Integration Tests') {
-//             steps {
-//                 sh 'mvn verify -Pintegration-tests'
-//             }
-//         }
+        stage('Unit Tests') {
+            steps {
+                sh 'mvn test -Punit-tests'
+            }
+        }
+        stage('Integration Tests') {
+            steps {
+                sh 'mvn verify -Pintegration-tests'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn clean install -DskipTests'
