@@ -22,11 +22,11 @@ pipeline {
 //                 sh 'mvn verify -Pintegration-tests'
 //             }
 //         }
-//         stage('Build') {
-//             steps {
-//                 sh 'mvn clean install -DskipTests'
-//             }
-//         }
+        stage('Build') {
+            steps {
+                sh 'mvn clean install -DskipTests'
+            }
+        }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
