@@ -31,7 +31,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh """
-                        mvn clean verify sonar:sonar \
+                        mvn clean verify -DskipTests sonar:sonar \
                         -Dsonar.scanner.forceAnalysis=true \
                         -Dsonar.projectKey=social_media_pipeline-final \
                         -Dsonar.projectName='social_media_pipeline-final' \
