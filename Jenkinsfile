@@ -75,9 +75,9 @@ pipeline {
                 def emailBody = emailTemplate.replace('${JOB_NAME}', env.JOB_NAME)
                                              .replace('${BUILD_NUMBER}', env.BUILD_NUMBER)
                                              .replace('${status}', "Successful")
-//                                              .replace('${BUILD_URL}', env.BUILD_URL)
-//                                              .replace('${BUILD_DURATION}', currentBuild.durationString)
-//                                              .replace('${BUILD_CAUSE}', currentBuild.getBuildCauses()[0].shortDescription)
+                                             .replace('${BUILD_URL}', env.BUILD_URL)
+                                             .replace('${BUILD_DURATION}', currentBuild.durationString)
+                                             .replace('${BUILD_CAUSE}', currentBuild.getBuildCauses()[0].shortDescription)
 
                 emailext subject: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                          body: emailBody,
