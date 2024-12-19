@@ -78,6 +78,7 @@ pipeline {
                                              .replace('${BUILD_URL}', env.BUILD_URL)
                                              .replace('${BUILD_DURATION}', currentBuild.durationString)
                                              .replace('${BUILD_CAUSE}', currentBuild.getBuildCauses()[0].shortDescription)
+                                             .replace('${color}', "#48c350")
 
                 emailext subject: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                          body: emailBody,
@@ -90,9 +91,10 @@ pipeline {
                 def emailBody = emailTemplate.replace('${JOB_NAME}', env.JOB_NAME)
                                              .replace('${BUILD_NUMBER}', env.BUILD_NUMBER)
                                              .replace('${status}', "Failed")
-                //                                              .replace('${BUILD_URL}', env.BUILD_URL)
-                //                                              .replace('${BUILD_DURATION}', currentBuild.durationString)
-                //                                              .replace('${BUILD_CAUSE}', currentBuild.getBuildCauses()[0].shortDescription)
+                                             .replace('${BUILD_URL}', env.BUILD_URL)
+                                             .replace('${BUILD_DURATION}', currentBuild.durationString)
+                                             .replace('${BUILD_CAUSE}', currentBuild.getBuildCauses()[0].shortDescription)
+                                             .replace('${color}', "red")
 
                 emailext subject: "Build FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                          body: emailBody,
