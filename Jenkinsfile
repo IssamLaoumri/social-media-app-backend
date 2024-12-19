@@ -80,7 +80,7 @@ pipeline {
 //                                              .replace('${BUILD_CAUSE}', currentBuild.getBuildCauses()[0].shortDescription)
 
                 emailext subject: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                         body: "The build was successful.\n\nCheck details: ${env.BUILD_URL}",
+                         body: emailBody,
                          to: 'issamlaoumri@gmail.com'
             }
         }
@@ -95,7 +95,7 @@ pipeline {
                 //                                              .replace('${BUILD_CAUSE}', currentBuild.getBuildCauses()[0].shortDescription)
 
                 emailext subject: "Build FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                         body: "The build failed.\n\nCheck details: ${env.BUILD_URL}",
+                         body: emailBody,
                          to: 'issamlaoumri@gmail.com'
             }
         }
