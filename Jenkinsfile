@@ -70,226 +70,224 @@ pipeline {
     }
     post {
         success {
-            def body = """<style>
-                                  body {
-                                      margin: 0;
-                                      padding: 0;
-                                      font-family: 'Arial', sans-serif;
-                                      background-color: #f5f7fa;
-                                      color: #333;
-                                  }
-                                  .container {
-                                      max-width: 600px;
-                                      margin: 50px auto;
-                                      background: #fff;
-                                      border-radius: 12px;
-                                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                                      overflow: hidden;
-                                  }
-                                  .header {
-                                      padding: 20px;
-                                      text-align: center;
-                                      background-color: #007bff;
-                                      color: white;
-                                  }
-                                  .header h1 {
-                                      font-size: 24px;
-                                      margin: 0;
-                                  }
-                                  .icon {
-                                      font-size: 48px;
-                                      margin-bottom: 10px;
-                                  }
-                                  .content {
-                                      padding: 20px;
-                                  }
-                                  .status {
-                                      display: flex;
-                                      align-items: center;
-                                      gap: 10px;
-                                      margin-bottom: 20px;
-                                  }
-                                  .status.success .icon {
-                                      color: green;
-                                  }
-                                  .status.failure .icon {
-                                      color: red;
-                                  }
-                                  .status-text {
-                                      font-size: 18px;
-                                      font-weight: bold;
-                                  }
-                                  .details {
-                                      margin-top: 10px;
-                                      border-top: 1px solid #eee;
-                                      padding-top: 15px;
-                                  }
-                                  .details p {
-                                      margin: 5px 0;
-                                  }
-                                  .details a {
-                                      color: #007bff;
-                                      text-decoration: none;
-                                  }
-                                  .details a:hover {
-                                      text-decoration: underline;
-                                  }
-                                  .footer {
-                                      padding: 15px;
-                                      text-align: center;
-                                      background-color: #f8f9fa;
-                                      font-size: 12px;
-                                      color: #777;
-                                  }
-                              </style>
-                          </head>
-                          <body>
-                              <div class="container">
-                                  <!-- Header -->
-                                  <div class="header">
-                                      <div class="icon">🚀</div>
-                                      <h1>Build Notification</h1>
-                                  </div>
-
-                                  <!-- Success Content -->
-                                  <div class="content">
-                                      <div class="status success">
-                                          <div class="icon">✅</div>
-                                          <div class="status-text">The build was successful!</div>
-                                      </div>
-                                      <div class="details">
-                                          <p><strong>Job Name:</strong> ${env.JOB_NAME}</p>
-                                          <p><strong>Build Number:</strong> #${env.BUILD_NUMBER}</p>
-                                          <p><strong>Start Time:</strong> ${env.START_TIME}</p>
-                                          <p><strong>Duration:</strong> ${env.BUILD_DURATION}</p>
-                                          <p>
-                                              <strong>Details:</strong>
-                                              <a href="${env.BUILD_URL}" target="_blank">View Build Details</a>
-                                          </p>
-                                      </div>
-                                  </div>
-                                  <!-- Footer -->
-                                  <div class="footer">
-                                      <p>Automated Build Notification System</p>
-                                  </div>
-                              </div>
-                          </body>
-                          </html>
-"""
             emailext subject: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                     body: body,
+                     body: """<style>
+                                                             body {
+                                                                 margin: 0;
+                                                                 padding: 0;
+                                                                 font-family: 'Arial', sans-serif;
+                                                                 background-color: #f5f7fa;
+                                                                 color: #333;
+                                                             }
+                                                             .container {
+                                                                 max-width: 600px;
+                                                                 margin: 50px auto;
+                                                                 background: #fff;
+                                                                 border-radius: 12px;
+                                                                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                                                 overflow: hidden;
+                                                             }
+                                                             .header {
+                                                                 padding: 20px;
+                                                                 text-align: center;
+                                                                 background-color: #007bff;
+                                                                 color: white;
+                                                             }
+                                                             .header h1 {
+                                                                 font-size: 24px;
+                                                                 margin: 0;
+                                                             }
+                                                             .icon {
+                                                                 font-size: 48px;
+                                                                 margin-bottom: 10px;
+                                                             }
+                                                             .content {
+                                                                 padding: 20px;
+                                                             }
+                                                             .status {
+                                                                 display: flex;
+                                                                 align-items: center;
+                                                                 gap: 10px;
+                                                                 margin-bottom: 20px;
+                                                             }
+                                                             .status.success .icon {
+                                                                 color: green;
+                                                             }
+                                                             .status.failure .icon {
+                                                                 color: red;
+                                                             }
+                                                             .status-text {
+                                                                 font-size: 18px;
+                                                                 font-weight: bold;
+                                                             }
+                                                             .details {
+                                                                 margin-top: 10px;
+                                                                 border-top: 1px solid #eee;
+                                                                 padding-top: 15px;
+                                                             }
+                                                             .details p {
+                                                                 margin: 5px 0;
+                                                             }
+                                                             .details a {
+                                                                 color: #007bff;
+                                                                 text-decoration: none;
+                                                             }
+                                                             .details a:hover {
+                                                                 text-decoration: underline;
+                                                             }
+                                                             .footer {
+                                                                 padding: 15px;
+                                                                 text-align: center;
+                                                                 background-color: #f8f9fa;
+                                                                 font-size: 12px;
+                                                                 color: #777;
+                                                             }
+                                                         </style>
+                                                     </head>
+                                                     <body>
+                                                         <div class="container">
+                                                             <!-- Header -->
+                                                             <div class="header">
+                                                                 <div class="icon">🚀</div>
+                                                                 <h1>Build Notification</h1>
+                                                             </div>
+
+                                                             <!-- Success Content -->
+                                                             <div class="content">
+                                                                 <div class="status success">
+                                                                     <div class="icon">✅</div>
+                                                                     <div class="status-text">The build was successful!</div>
+                                                                 </div>
+                                                                 <div class="details">
+                                                                     <p><strong>Job Name:</strong> ${env.JOB_NAME}</p>
+                                                                     <p><strong>Build Number:</strong> #${env.BUILD_NUMBER}</p>
+                                                                     <p><strong>Start Time:</strong> ${env.START_TIME}</p>
+                                                                     <p><strong>Duration:</strong> ${env.BUILD_DURATION}</p>
+                                                                     <p>
+                                                                         <strong>Details:</strong>
+                                                                         <a href="${env.BUILD_URL}" target="_blank">View Build Details</a>
+                                                                     </p>
+                                                                 </div>
+                                                             </div>
+                                                             <!-- Footer -->
+                                                             <div class="footer">
+                                                                 <p>Automated Build Notification System</p>
+                                                             </div>
+                                                         </div>
+                                                     </body>
+                                                     </html>
+                           """,
                      to: 'issamlaoumri@gmail.com'
         }
         failure {
-        def body = """<style>
-                                          body {
-                                              margin: 0;
-                                              padding: 0;
-                                              font-family: 'Arial', sans-serif;
-                                              background-color: #f5f7fa;
-                                              color: #333;
-                                          }
-                                          .container {
-                                              max-width: 600px;
-                                              margin: 50px auto;
-                                              background: #fff;
-                                              border-radius: 12px;
-                                              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                                              overflow: hidden;
-                                          }
-                                          .header {
-                                              padding: 20px;
-                                              text-align: center;
-                                              background-color: #007bff;
-                                              color: white;
-                                          }
-                                          .header h1 {
-                                              font-size: 24px;
-                                              margin: 0;
-                                          }
-                                          .icon {
-                                              font-size: 48px;
-                                              margin-bottom: 10px;
-                                          }
-                                          .content {
-                                              padding: 20px;
-                                          }
-                                          .status {
-                                              display: flex;
-                                              align-items: center;
-                                              gap: 10px;
-                                              margin-bottom: 20px;
-                                          }
-                                          .status.success .icon {
-                                              color: green;
-                                          }
-                                          .status.failure .icon {
-                                              color: red;
-                                          }
-                                          .status-text {
-                                              font-size: 18px;
-                                              font-weight: bold;
-                                          }
-                                          .details {
-                                              margin-top: 10px;
-                                              border-top: 1px solid #eee;
-                                              padding-top: 15px;
-                                          }
-                                          .details p {
-                                              margin: 5px 0;
-                                          }
-                                          .details a {
-                                              color: #007bff;
-                                              text-decoration: none;
-                                          }
-                                          .details a:hover {
-                                              text-decoration: underline;
-                                          }
-                                          .footer {
-                                              padding: 15px;
-                                              text-align: center;
-                                              background-color: #f8f9fa;
-                                              font-size: 12px;
-                                              color: #777;
-                                          }
-                                      </style>
-                                  </head>
-                                  <body>
-                                      <div class="container">
-                                          <!-- Header -->
-                                          <div class="header">
-                                              <div class="icon">🚀</div>
-                                              <h1>Build Notification</h1>
-                                          </div>
-
-                                          <!-- Failure Content -->
-                                          <div class="content">
-                                              <div class="status failure">
-                                                  <div class="icon">❌</div>
-                                                  <div class="status-text">The build failed.</div>
-                                              </div>
-                                              <div class="details">
-                                                  <p><strong>Job Name:</strong> ${env.JOB_NAME}</p>
-                                                  <p><strong>Build Number:</strong> #${env.BUILD_NUMBER}</p>
-                                                  <p><strong>Start Time:</strong> ${env.START_TIME}</p>
-                                                  <p><strong>Duration:</strong> ${env.BUILD_DURATION}</p>
-                                                  <p>
-                                                      <strong>Details:</strong>
-                                                      <a href="${env.BUILD_URL}" target="_blank">View Build Details</a>
-                                                  </p>
-                                              </div>
-                                          </div>
-
-                                          <!-- Footer -->
-                                          <div class="footer">
-                                              <p>Automated Build Notification System</p>
-                                          </div>
-                                      </div>
-                                  </body>
-                                  </html>
-        """
             emailext subject: "Build FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                     body: body,
+                     body: """<style>
+                                                                     body {
+                                                                         margin: 0;
+                                                                         padding: 0;
+                                                                         font-family: 'Arial', sans-serif;
+                                                                         background-color: #f5f7fa;
+                                                                         color: #333;
+                                                                     }
+                                                                     .container {
+                                                                         max-width: 600px;
+                                                                         margin: 50px auto;
+                                                                         background: #fff;
+                                                                         border-radius: 12px;
+                                                                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                                                         overflow: hidden;
+                                                                     }
+                                                                     .header {
+                                                                         padding: 20px;
+                                                                         text-align: center;
+                                                                         background-color: #007bff;
+                                                                         color: white;
+                                                                     }
+                                                                     .header h1 {
+                                                                         font-size: 24px;
+                                                                         margin: 0;
+                                                                     }
+                                                                     .icon {
+                                                                         font-size: 48px;
+                                                                         margin-bottom: 10px;
+                                                                     }
+                                                                     .content {
+                                                                         padding: 20px;
+                                                                     }
+                                                                     .status {
+                                                                         display: flex;
+                                                                         align-items: center;
+                                                                         gap: 10px;
+                                                                         margin-bottom: 20px;
+                                                                     }
+                                                                     .status.success .icon {
+                                                                         color: green;
+                                                                     }
+                                                                     .status.failure .icon {
+                                                                         color: red;
+                                                                     }
+                                                                     .status-text {
+                                                                         font-size: 18px;
+                                                                         font-weight: bold;
+                                                                     }
+                                                                     .details {
+                                                                         margin-top: 10px;
+                                                                         border-top: 1px solid #eee;
+                                                                         padding-top: 15px;
+                                                                     }
+                                                                     .details p {
+                                                                         margin: 5px 0;
+                                                                     }
+                                                                     .details a {
+                                                                         color: #007bff;
+                                                                         text-decoration: none;
+                                                                     }
+                                                                     .details a:hover {
+                                                                         text-decoration: underline;
+                                                                     }
+                                                                     .footer {
+                                                                         padding: 15px;
+                                                                         text-align: center;
+                                                                         background-color: #f8f9fa;
+                                                                         font-size: 12px;
+                                                                         color: #777;
+                                                                     }
+                                                                 </style>
+                                                             </head>
+                                                             <body>
+                                                                 <div class="container">
+                                                                     <!-- Header -->
+                                                                     <div class="header">
+                                                                         <div class="icon">🚀</div>
+                                                                         <h1>Build Notification</h1>
+                                                                     </div>
+
+                                                                     <!-- Failure Content -->
+                                                                     <div class="content">
+                                                                         <div class="status failure">
+                                                                             <div class="icon">❌</div>
+                                                                             <div class="status-text">The build failed.</div>
+                                                                         </div>
+                                                                         <div class="details">
+                                                                             <p><strong>Job Name:</strong> ${env.JOB_NAME}</p>
+                                                                             <p><strong>Build Number:</strong> #${env.BUILD_NUMBER}</p>
+                                                                             <p><strong>Start Time:</strong> ${env.START_TIME}</p>
+                                                                             <p><strong>Duration:</strong> ${env.BUILD_DURATION}</p>
+                                                                             <p>
+                                                                                 <strong>Details:</strong>
+                                                                                 <a href="${env.BUILD_URL}" target="_blank">View Build Details</a>
+                                                                             </p>
+                                                                         </div>
+                                                                     </div>
+
+                                                                     <!-- Footer -->
+                                                                     <div class="footer">
+                                                                         <p>Automated Build Notification System</p>
+                                                                     </div>
+                                                                 </div>
+                                                             </body>
+                                                             </html>
+                                   """,
                      to: 'issamlaoumri@gmail.com'
         }
     }
