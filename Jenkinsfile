@@ -81,7 +81,6 @@ pipeline {
 
                 emailext subject: "Build SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                          body: emailBody,
-                         mimeType: 'text/html'
                          to: 'issamlaoumri@gmail.com'
             }
         }
@@ -97,7 +96,6 @@ pipeline {
 
                 emailext subject: "Build FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                          body: emailBody,
-                         mimeType: 'text/html'
                          to: 'issamlaoumri@gmail.com'
             }
         }
