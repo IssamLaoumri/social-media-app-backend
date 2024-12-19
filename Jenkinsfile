@@ -177,6 +177,7 @@ pipeline {
                                                      </body>
                                                      </html>
                            """,
+                     mimeType: 'text/html',
                      to: 'issamlaoumri@gmail.com'
         }
         failure {
@@ -288,6 +289,7 @@ pipeline {
                                                              </body>
                                                              </html>
                                    """,
+                     mimeType: 'text/html',
                      to: 'issamlaoumri@gmail.com'
         }
     }
