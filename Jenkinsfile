@@ -3,15 +3,15 @@ pipeline {
     tools {
         maven 'maven'
     }
-//     environment {
-//         DOCKER_IMAGE = "social_media_backend_pipeline:${env.BUILD_NUMBER}"
-//     }
-//     stages {
-//         stage('Checkout') {
-//             steps {
-//                 checkout scm
-//             }
-//         }
+    environment {
+        DOCKER_IMAGE = "social_media_backend_pipeline:${env.BUILD_NUMBER}"
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
 //         stage('Unit Tests') {
 //             steps {
 //                 sh 'mvn test -Punit-tests'
@@ -67,7 +67,7 @@ pipeline {
 //                 }
 //             }
 //         }
-//     }
+    }
     post {
         success {
             script{
