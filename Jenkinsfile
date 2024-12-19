@@ -96,7 +96,7 @@ pipeline {
                 //                                              .replace('${BUILD_CAUSE}', currentBuild.getBuildCauses()[0].shortDescription)
 
                 emailext subject: "Build FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                         body: emailBody,
+                         body: "emailBody",
                          mimeType: 'text/html'
                          to: 'issamlaoumri@gmail.com'
             }
